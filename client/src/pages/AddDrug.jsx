@@ -5,6 +5,7 @@ import { Web3Context } from '../utils/contexts/Contract.jsx';
 const AddDrug = () => {
     const { contract, account, web3 } = useContext(Web3Context);
     const [name, setName] = useState('');
+    const [expiry, setExpiry] = useState('');
     const [quantity, setQuantity] = useState(0);
     const [price, setPrice] = useState("");
 
@@ -14,10 +15,11 @@ const AddDrug = () => {
 
         try {
             const priceInWei = web3.utils.toWei(price, 'ether'); // Convert ether to wei
-            await contract.methods.addDrug(name, quantity, priceInWei).send({ from: account });
+            await contract.methods.addDrug(name, expiry, quantity, priceInWei).send({ from: account });
             setName('');
             setQuantity(0);
             setPrice('');
+            setExpiry('');
         } catch (error) {
             console.log('Error adding drug:', error);
         }
@@ -35,6 +37,17 @@ const AddDrug = () => {
                         className="w-full p-2 border rounded"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="mb-4">
+                    <label htmlFor="name" className="block font-semibold mb-1">Expiry Date:</label>
+                    <input
+                        type="text"
+                        id="name"
+                        className="w-full p-2 border rounded"
+                        value={expiry}
+                        onChange={(e) => setExpiry(e.target.value)}
                         required
                     />
                 </div>

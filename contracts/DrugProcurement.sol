@@ -11,6 +11,7 @@ contract DrugProcurement {
     struct Drug {
         uint id;
         string name;
+        string expiry;
         uint quantity;
         uint price;
         address supplier;
@@ -43,7 +44,7 @@ contract DrugProcurement {
         totalPurchases = 0;
     }
 
-    function addDrug(string memory _name, uint _quantity, uint _price) external {
+    function addDrug(string memory _name,string memory _expiry, uint _quantity, uint _price) external {
         require(_quantity > 0, "Quantity must be greater than 0");
         require(_price > 0, "Price must be greater than 0");
 
@@ -51,6 +52,7 @@ contract DrugProcurement {
         Drug storage existingDrug = drugs[totalDrugs];
         existingDrug.id = totalDrugs; // Set the ID
         existingDrug.name = _name;
+        existingDrug.expiry = _expiry;
         existingDrug.quantity += _quantity;
         existingDrug.price = _price;
         existingDrug.supplier = msg.sender;

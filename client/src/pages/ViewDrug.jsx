@@ -65,6 +65,7 @@ const ViewDrug = () => {
                 <div className="bg-white p-6 rounded-lg shadow-md">
                     <h2 className="text-lg font-semibold mb-2">{drug.name}</h2>
                     <p className="text-gray-600">Quantity: {drug.quantity}</p>
+                    <p className="text-gray-600">Expiry Date: {drug.expiry}</p>
                     <p className="text-gray-600">Price: {web3.utils.fromWei(drug.price, 'ether')} ETH</p>
                     {isOwner ? (
                         <>
