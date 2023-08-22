@@ -1,0 +1,12 @@
+{
+  "name": "truffle-project",
+  "version": "0.1.0",
+  "description": "Truffle project with LandManagement contract",
+  "scripts": {
+      "start": "cd client && npm run dev"
+    
+  },
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.7"
+  }
+}
